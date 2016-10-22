@@ -1,21 +1,23 @@
 from django.http import Http404, JsonResponse, HttpResponseBadRequest, HttpResponseServerError, HttpResponse
 from django.views.decorators.http import require_GET, require_POST
 from django.views.decorators.csrf import csrf_exempt
-from django.shortcuts import get_object_or_404
 import json
 from . import models
 from . import hash
 from .process import process, ProcessingInputError
-from .search import index_data
+from .search import index_data, search_ids, SearchError
 
 @require_GET
 def search(request):
     q = request.GET.get('q')
     if not q:
-        return HttpResponseBadRequest("q not set")
-    q = q.trim()
+        return HttpResponseBadRequest("GET['q'] not set!")
+    q = q.strip()
 
-    document_ids = [1]
+    try:
+        document_ids = search_ids(q)
+    except SearchError as e:
+        return HttpResponseServerError(str(e))
 
     data = {
         'status': 'ok',

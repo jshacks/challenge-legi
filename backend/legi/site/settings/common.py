@@ -83,3 +83,6 @@ TIME_ZONE = 'UTC'
 
 USE_TZ = True
 
+ELASTICSEARCH_INDEX = 'legi'
+ELASTICSEARCH_URL = "http://localhost:9200"
+
