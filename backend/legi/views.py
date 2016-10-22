@@ -1,6 +1,7 @@
 from django.http import Http404, JsonResponse, HttpResponseBadRequest, HttpResponseServerError, HttpResponse
 from django.views.decorators.http import require_GET, require_POST
 from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import get_object_or_404
 import json
 from . import models
 from . import hash
@@ -44,10 +45,15 @@ def status(request):
 
 @require_GET
 def doc(request, doc_id):
+    objects = models.Document.objects.filter(file__sha1=doc_id).order_by('-date_modified')
+    if not objects:
+        raise Http404
+    document = objects[0]
     data = {
         'status': 'ok',
         'doc_id': doc_id,
     }
+    data.update(document.parsed)
     return JsonResponse(data)
 
 
