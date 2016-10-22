@@ -1,22 +1,30 @@
 <div class="first" ng-controller='MainCtrl'>
-      {{5+5}}
+     
       <form>
-      <input type='text' ng-model='q'>
-      <input type="submit" ng-click='qRequest(); showCat();' >
+      <!--
+      <input type="text" ng-model='startDate'>
+      <input type="text" ng-model='endDate'>
+      -->
+      <input id='search' type='text' ng-model='q'>
+      <input id='submit' type="submit" ng-click='qRequest(); colors();' class="btn btn-default" >
       </form>
-
+      <br>
       <div id='jsonator' ng-repeat='x in jsonator'>
       	
-      	<div><span id='titlu'>Titlu: </span>{{x.titlu}}</div>
-      	<div><span id='titlu'>Categorie: </span>{{x.categorie}}</div>
-      	<div><span id='titlu'>Zonă: </span>{{x.zona}}</div>
-      	<div><span id='titlu'>Dată: </span>{{x.data}}</div>
-      	<div><span id='titlu'>Text: </span>{{x.text}}</div>
-      	<div><span id='titlu'>Fișier: </span>{{x.filename}}</div>
-      	<div><span id='titlu'>Pagină Originală: </span>{{x.originalPage}}</div>
-      	<div><span id='titlu'>Document Original: </span>{{x.originalDoc}}</div>
-      	<div><span id='titlu'>Crawler: </span>{{x.crawler}}</div>
-      	<div><span id='titlu'>Link Minister: </span>{{x.minister}}</div>
+      	<div id='block'>
+	      	
+	      	<div id='odd'><span id='titlu'>Titlu: </span>{{x.name}}</div>
+	      	<div id='even'><span id='titlu'>Categorie: </span>{{x.categorie}}</div>
+	      	<div id='odd'><span id='titlu'>Zonă: </span>{{x.zona}}</div>
+	      	<div id='even'><span id='titlu'>Dată: </span>{{x.data}}</div>
+	      	<div id='odd'><span id='titlu'>Text: </span>{{x.text}}</div>
+	      	<div id='even'><span id='titlu'>Fișier: </span>{{x.filename}}</div>
+	      	<div id='odd'><span id='titlu'>Pagină Originală: </span>{{x.originalPage}}</div>
+	      	<div id='even'><span id='titlu'>Document Original: </span>{{x.originalDoc}}</div>
+	      	<div id='odd'><span id='titlu'>Crawler: </span>{{x.crawler}}</div>
+	      	<div id='even'><span id='titlu'>Link Minister: </span>{{x.minister}}</div>
+      	
+      	</div>
       	<br>
       </div>
 
