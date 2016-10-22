@@ -25,8 +25,14 @@ class DocumentFile(models.Model):
     date_modified = models.DateTimeField(auto_now_add=True)
 
     @contextmanager
-    def open(self, mode='rb'):
-        yield self.path.open(mode)
+    def open_for_writing(self):
+        if not self.path.parent.exists():
+            self.path.parent.mkdir(parents=True)
+        yield self.path.open('wb')
+
+    @contextmanager
+    def open(self):
+        yield self.path.open('rb')
 
     @property
     def path(self):
