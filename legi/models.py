@@ -1,5 +1,7 @@
+from contextlib import contextmanager
 from django.db import models
 from django.contrib.postgres.fields import JSONField
+from django.conf import settings
 
 
 class SubmittedData(models.Model):
@@ -21,6 +23,14 @@ class DocumentFile(models.Model):
 
     date_added = models.DateTimeField(auto_now=True)
     date_modified = models.DateTimeField(auto_now_add=True)
+
+    @contextmanager
+    def open(self, mode='rb'):
+        yield self.path.open(mode)
+
+    @property
+    def path(self):
+        return settings.FILE_DIR / self.sha1 / self.filename
 
 
 class Document(models.Model):
