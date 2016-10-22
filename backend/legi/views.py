@@ -4,6 +4,8 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 from . import models
 from . import hash
+from .process import process, ProcessingInputError
+from .search import index
 
 @require_GET
 def search(request):
@@ -52,7 +54,6 @@ def doc(request, doc_id):
 @require_POST
 @csrf_exempt
 def submit(request):
-
     input_raw = request.POST.get('data')
     if not input_raw:
         return HttpResponseBadRequest('POST["data"] is not set!')
@@ -63,7 +64,17 @@ def submit(request):
 
     input_hash = hash.dict_sha1(input)
 
-    models.SubmittedData.objects.update_or_create(sha1=input_hash, data=input)
+    submitted, created = models.SubmittedData.objects.update_or_create(
+        sha1=input_hash,
+        data=input
+    )
+
+    try:
+        data = process(submitted)
+        index(data)
+    except ProcessingInputError as e:
+        print(e)
+        return HttpResponseServerError('error: ' + str(e))
 
     response = {
         'status': 'ok',
