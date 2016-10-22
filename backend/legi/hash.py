@@ -17,6 +17,7 @@ def file_sha1(opened_file):
 
     return sha1.hexdigest()
 
+
 def bytes_sha1(b):
     sha1 = hashlib.sha1()
     sha1.update(b)
