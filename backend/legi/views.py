@@ -5,7 +5,7 @@ import json
 from . import models
 from . import hash
 from .process import process, ProcessingInputError
-from .search import index
+from .search import index_data
 
 @require_GET
 def search(request):
@@ -70,15 +70,15 @@ def submit(request):
     )
 
     try:
-        data = process(submitted)
-        index(data)
+        doc, new = process(submitted)
+        index_data(doc)
     except ProcessingInputError as e:
         print(e)
         return HttpResponseServerError('error: ' + str(e))
 
     response = {
         'status': 'ok',
-        'new': True,
+        'new': new,
     }
 
     return JsonResponse(response)

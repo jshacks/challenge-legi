@@ -64,9 +64,11 @@ def download(url):
     r = requests.get(url, stream=True)
     if not r.ok:
         raise ProcessingInputError('document ' + url + " could not be accessed!")
-
-    filename = re.findall("filename=(.+)", r.headers['content-disposition'])[0]
-    content_type = r.headers['content-type']
+    try:
+        filename = re.findall("filename=(.+)", r.headers['content-disposition'])[0]
+    except KeyError:
+        filename = url.split('/')[-1]
+    content_type = r.headers.get('content-type', '')
 
     with tempfile.TemporaryFile() as f:
         for chunk in r.iter_content(chunk_size=1024*4):
@@ -104,6 +106,7 @@ def process(submitted_doc):
     url = submitted_data.get('originalUrl')
     if not url:
         raise ProcessingInputError('POST["data"] does not have "originalUrl" set!')
+    url = url.strip()
 
     doc_file = download(url)
     if not doc_file.tika_data:
@@ -117,11 +120,11 @@ def process(submitted_doc):
     doc, created = models.Document.objects.update_or_create(
         file_url=url,
         parsed=data,
-        submit=submitted_data,
+        submit=submitted_doc,
         file=doc_file,
     )
 
-    return doc
+    return doc, created
 
 
 

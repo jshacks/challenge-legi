@@ -1,4 +1,4 @@
 import elasticsearch as es
 
-def index(data):
+def index_data(data):
     pass
