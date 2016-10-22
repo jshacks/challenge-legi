@@ -1,0 +1,10 @@
+Django<1.10
+djangorestframework
+requests
+pip-tools
+psycopg2
+pathlib
+elasticsearch
+tika
+python-dateutil
+
