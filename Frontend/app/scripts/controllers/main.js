@@ -1,5 +1,5 @@
 'use strict';
-var URL = 'http://localhost:9337'
+var URL = 'http://legi.vij.ro:9337'
 
 /**
  * @ngdoc function
