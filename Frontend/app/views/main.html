@@ -27,9 +27,13 @@
 	      	<div id='even'><span id='titlu'>Fișier: </span>{{x.filename}}</div>
                   -->
 
-	      	<div id='odd'><span id='titlu'>Pagină Originală: </span><a id='butonPagina' class="btn btn-default pull-right btn-xs" href='{{x.originalPage}}' target="_blank">Deschide</a></div>
+                  <div id='odd'><span id='titlu'>Pagină Originală: </span><a 
+                          id='butonPagina' class="btn btn-default pull-right btn-xs" 
+                          href='{{x.originalPage}}' target="_blank">Deschide</a></div>
 
-	      	<div id='even'><span id='titlu'>Document Original: </span><a id='butonDocument' class="btn btn-default pull-right btn-xs" href='{{x.link}}' target="_blank">Document</a></div>
+	      	<div id='even'><span id='titlu'>Document Original: </span><a
+                    id='butonDocument' class="btn btn-default pull-right btn-xs"
+                    href='{{x.originalUrl}}' target="_blank">Document</a></div>
 
 	      	<div id='odd'><span id='titlu'>Crawler: </span>{{x.crawler}}</div>
 
