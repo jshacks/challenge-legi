@@ -1,9 +1,9 @@
 # Pending Laws Transparency
 
-This project makes available the Romanian Government'
-public data about pending laws.
-
+This project makes the public data about Romanian pending laws searchable.
 The original sites have no search engines and are hard to navigate.
+
+See it live at [legi.vij.ro](http://legi.vij.ro).
 
 # JSHacks
 
@@ -49,7 +49,6 @@ Guides and the API reference are located in the
 You can ask questions and interact with the community in the following
 locations:
 - [`jshacks`](http://159.203.166.178) channel on Slack
-
 
 
 ## License
