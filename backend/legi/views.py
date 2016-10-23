@@ -7,6 +7,14 @@ from . import hash
 from .process import process, ProcessingInputError
 from .search import index_data, search_ids, SearchError
 
+
+def get_document(id_string):
+    objects = models.Document.objects.filter(file__sha1=id_string).order_by('-date_modified')
+    if not objects:
+        raise Http404
+    return objects[0]
+
+
 @require_GET
 def search(request):
     q = request.GET.get('q')
@@ -18,11 +26,13 @@ def search(request):
         document_ids = search_ids(q)
     except SearchError as e:
         return HttpResponseServerError(str(e))
+    documents = [get_document(id) for id in document_ids]
 
     data = {
         'status': 'ok',
         'query': q,
         'document_ids': document_ids,
+        'documents': documents,
         'results': len(document_ids),
     }
 
@@ -47,10 +57,7 @@ def status(request):
 
 @require_GET
 def doc(request, doc_id):
-    objects = models.Document.objects.filter(file__sha1=doc_id).order_by('-date_modified')
-    if not objects:
-        raise Http404
-    document = objects[0]
+    document = get_document(doc_id)
     data = {
         'status': 'ok',
         'doc_id': doc_id,
