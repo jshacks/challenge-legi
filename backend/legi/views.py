@@ -26,7 +26,7 @@ def search(request):
         document_ids = search_ids(q)
     except SearchError as e:
         return HttpResponseServerError(str(e))
-    documents = [get_document(id) for id in document_ids]
+    documents = [get_document(id).parsed for id in document_ids]
 
     data = {
         'status': 'ok',
