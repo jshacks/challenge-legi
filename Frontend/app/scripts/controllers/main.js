@@ -1,4 +1,5 @@
 'use strict';
+var URL = 'http://localhost:9337'
 
 /**
  * @ngdoc function
@@ -17,7 +18,7 @@ angular.module('lawApp')
   	$scope.qRequest = function(){
   		$http({
   			method: 'GET',
-  			url: '/search?q=' + $scope.q
+  			url: URL + '/search?q=' + $scope.q
 		  }).then(function successCallback(response) {
     		// this callback will be called asynchronously
     		// when the response is available
