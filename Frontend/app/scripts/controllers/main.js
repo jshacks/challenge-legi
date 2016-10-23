@@ -34,7 +34,7 @@ angular.module('lawApp')
 
   		console.log($scope.q);
   	}
-
+/*
     $scope.jsonate = function(){
 
     $scope.jsonator = [{
@@ -431,6 +431,6 @@ angular.module('lawApp')
       
       
     }
-
+*/
 
   });
