@@ -1,0 +1,132 @@
+.first{
+  min-height: 600px;
+  margin-bottom:20px;
+  background-color: white;
+  padding: 15px;
+  --box-shadow: 0px 0px 13px 5px #454a54;
+  box-shadow: 0px 0px 13px 5px black;
+}
+
+#search{
+  padding : 3px 5px 3px 10px;
+  width: 80%;
+  font-size: 12px;
+  border-radius: 30px;
+}
+#submit{
+
+
+  border-radius: 30px;
+}
+
+/*navinavnav*/
+.navbar{
+  background-color: #3367d6;
+  border: 0px;
+  border-bottom: 5px solid black;
+  border-radius: 0px;
+  margin: 0px;
+
+}
+.navbar-brand{
+  position: absolute;
+  left: 50%;
+  color:white !important;
+}
+.navbar .navbar-nav > .active > a{
+  background-color: black;
+  color:white;
+  font-weight: bold;
+}
+.navbar .navbar-nav > .active > a:hover{
+  background-color: black;
+  color:white;
+  font-weight: bold;
+
+}
+.navbar .navbar-nav  > li > a:hover{
+  background-color: black;
+  color:white;
+
+
+}
+.navbar .navbar-nav > li  >a {
+  color:white;
+
+}
+
+
+
+
+
+/*jsonator*/
+#block{
+  border: 1px solid #e3e5e8;
+}
+#titlu{
+  font-size: 14px;
+  font-weight: bold;
+  color: #333333;
+}
+#block div{
+  padding: 5px 5px 5px 20px;
+  width: 100%;
+}
+#block #odd{
+  
+}
+#block #even{
+  background-color: #eff1f4;
+}
+#butonDocument{
+  height: 100%;
+  width: 70%;
+  --background-color: #57597F;
+}
+#butonPagina{
+  width: 70%;
+}
+
+
+
+
+
+
+
+
+
+
+
+body {
+  padding: 0;
+  background-image: url(../images/circuit.png);      
+  
+--background: #E0EAFC; /* fallback for old browsers */
+--background: -webkit-linear-gradient(to left, #E0EAFC , #CFDEF3); /* Chrome 10-25, Safari 5.1-6 */
+--background: linear-gradient(to left, #E0EAFC , #CFDEF3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+  background-color: #262626;
+  min-height: 40px;
+}
+
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  
+  .container {
+    max-width: 730px;
+  }
+
+}
+@media screen and (max-width: 768px){
+  .navbar-brand{
+    left: 0%;
+  }
+}
