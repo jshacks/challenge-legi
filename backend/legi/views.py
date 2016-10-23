@@ -35,8 +35,9 @@ def search(request):
         'documents': documents,
         'results': len(document_ids),
     }
-
-    return JsonResponse(data)
+    r = JsonResponse(data)
+    r["Access-Control-Allow-Origin"] = '*'
+    return r
 
 
 @require_GET
