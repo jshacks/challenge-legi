@@ -60,6 +60,16 @@
 
 
 /*jsonator*/
+.top-table{
+  background-color: #3367d6;
+  color:white;
+  font-weight: bold;
+  font-size:15px;
+}
+.top-table #id{
+  color:white;
+  font-weight: bold;
+  }
 #block{
   border: 1px solid #e3e5e8;
 }
@@ -80,11 +90,11 @@
 }
 #butonDocument{
   height: 100%;
-  width: 70%;
+  width: 20%;
   --background-color: #57597F;
 }
 #butonPagina{
-  width: 70%;
+  width: 20%;
 }
 
 
