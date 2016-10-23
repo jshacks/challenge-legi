@@ -22,9 +22,7 @@ angular.module('lawApp')
 		  }).then(function successCallback(response) {
     		// this callback will be called asynchronously
     		// when the response is available
-    		$scope.jsonator = response;
-
-
+    		$scope.jsonator = response.documents;
 
     		console.log(response);
 
