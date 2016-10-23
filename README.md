@@ -1,14 +1,13 @@
-# JSHacks Project
+# Pending Laws Transparency
 
-[![Travis Build Status](https://travis-ci.org/jshacks/boilerplate.svg?branch=master)](https://travis-ci.org/jshacks/boilerplate)
-[![devDependency Status](https://david-dm.org/jshacks/boilerplate/dev-status.svg)](https://david-dm.org/jshacks/boilerplate?type=dev)
-[![Join the Electron Community on Slack](http://159.203.166.178/badge.svg)](http://159.203.166.178)
+This project makes available the Romanian Government'
+public data about pending laws.
 
+The original sites have no search engines and are hard to navigate.
 
-This is a boilerplate project to getting you started right away.
+# JSHacks
 
-Follow [@JS_Hacks](https://twitter.com/js_hacks) on Twitter for important
-announcements.
+This project participates in the JSHacks 2016 hackathon.
 
 This project adheres to the Contributor Covenant [code of conduct](CODE_OF_CONDUCT.md).
 By participating, you are expected to uphold this code. Please report unacceptable
@@ -23,6 +22,27 @@ Guides and the API reference are located in the
 
 ## Quick Start
 
+- install bower, npm, grunt, python2, python3, virtualenv, scrapy
+- set up a virtualenv
+- set up the backend:
+
+        cd backend
+        source ~/virtualenv/bin/activate
+        ./manage.py migrate
+        ./manage.py createindex
+        ./manage.py runserver 9337
+        
+- set up the ui:
+
+        cd Frontend
+        npm install
+        bower install
+        grunt serve
+
+- start crawling:
+        
+        scrapy crawl finante
+        scrapy crawl afaceri_externe
 
 ## Community
 
@@ -31,8 +51,6 @@ locations:
 - [`jshacks`](http://159.203.166.178) channel on Slack
 
 
-## Documentation inspiration from
-Electron, Atom, contributor-covenant.org
 
 ## License
 
