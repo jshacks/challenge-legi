@@ -43,22 +43,6 @@ def search(request):
 
 
 @require_GET
-def index(request):
-    return HttpResponse("index")
-
-
-@require_GET
-def status(request):
-
-    data = {
-        'status': 'ok',
-        'num_documents': 0,
-        'num_requests': 0,
-    }
-    return JsonResponse(data)
-
-
-@require_GET
 def doc(request, doc_id):
     document = get_document(doc_id)
     data = {

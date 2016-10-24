@@ -7,6 +7,4 @@ urlpatterns = [
     url(r'^search$', views.search),
     url(r'^doc/(?P<doc_id>[\-_A-Za-z0-9]+)$', views.doc),
     url(r'^submit$', views.submit),
-    url(r'^status$', views.status),
-    url(r'^$', views.index),
 ]
