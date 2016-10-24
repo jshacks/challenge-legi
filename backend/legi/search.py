@@ -14,17 +14,21 @@ class SearchError(Exception):
 
 
 def translate_es_errors(func):
+    """Catches all Elasticsearch errors and raises an instance of SearchError."""
+
     def wrapper(*a, **k):
         try:
             return func(*a, **k)
         except exceptions.TransportError as e:
-            print(e)
-            raise SearchError("Elasticsearch refused connection!")
+            print(str(e))
+            raise SearchError("Elasticsearch refused connection: " + str(e))
     return wrapper
 
 
 @translate_es_errors
 def index_data(document):
+    """Indexes an instance of the Document model in Elasticsearch."""
+
     sha1 = document.file.sha1
 
     es.index(
@@ -56,6 +60,8 @@ def run_search(query, fields, sort=None, highlight=None):
 
 
 def search_ids(query_string):
+    """Runs a querystring search on Elasticsearch and returns all the hits' ids."""
+
     query = {
         "query_string": {
             "query": query_string,

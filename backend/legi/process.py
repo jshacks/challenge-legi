@@ -14,6 +14,15 @@ class ProcessingInputError(Exception):
 
 
 def extract_tika_meta(meta):
+    """Extracts and normalizes metadata from Apache Tika.
+    Returns a dict with the following keys set:
+        - content-type
+        - author
+        - date-created
+        - date-modified
+        - original-tika-meta
+    The dates are encoded in the ISO format."""
+
     def _get_flat(dict, *keys):
         item = None
         for key in keys:
@@ -61,6 +70,9 @@ def extract_tika_meta(meta):
 
 
 def download(url):
+    """Downloads the document at the given URL.
+    Returns a saved models.Document instance."""
+
     r = requests.get(url, stream=True)
     if not r.ok:
         raise ProcessingInputError('document ' + url + " could not be accessed!")
@@ -102,6 +114,10 @@ def tika_parse(opened_file):
 
 
 def process(submitted_doc):
+    """Takes a models.SubmittedData instance and processes it.
+    All source documents are downloaded and stored, as needed.
+    This function returns a (saved models.Document, created) tuple."""
+
     submitted_data = submitted_doc.data
     url = submitted_data.get('originalUrl')
     if not url:
@@ -125,8 +141,3 @@ def process(submitted_doc):
     )
 
     return doc, created
-
-
-
-
-

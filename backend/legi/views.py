@@ -8,8 +8,10 @@ from .process import process, ProcessingInputError
 from .search import index_data, search_ids, SearchError
 
 
-def get_document(id_string):
-    objects = models.Document.objects.filter(file__sha1=id_string).order_by('-date_modified')
+def get_document(sha1):
+    """Returns the latest models.Document instance with the given sha1."""
+
+    objects = models.Document.objects.filter(file__sha1=sha1).order_by('-date_modified')
     if not objects:
         raise Http404
     return objects[0]
@@ -70,6 +72,12 @@ def doc(request, doc_id):
 @require_POST
 @csrf_exempt
 def submit(request):
+    """Endpoint for submitting new crawls.
+    Expects POST['data'] to be populated with data for a single document group."""
+
+    # TODO authentication? Secret keys?
+    # TODO stop processing the documents when submitted; use processing queues
+
     input_raw = request.POST.get('data')
     if not input_raw:
         return HttpResponseBadRequest('POST["data"] is not set!')
