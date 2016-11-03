@@ -1,3 +1,12 @@
+# The project moved to https://github.com/gabriel-v/protolegi
+
+This is the repo we used during the JSHacks hackathon in Oct, 2016.
+While that hackathon has ended, the project has not.
+
+Until we decide whether to make a GitHub organization or not, [this](https://github.com/gabriel-v/protolegi) will be the place to submit feedback and contributions.
+
+For historic purposes, the old readme is kept below.
+
 # Pending Laws Transparency
 
 This project makes the public data about Romanian pending laws searchable.
